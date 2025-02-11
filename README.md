@@ -196,7 +196,7 @@ Indien de response van `executeService` of van `executeTask` de variabele `is_la
 }
 ```
 
-Met deze stappen kunnen alle services in het portaal, waar de organisatie toegang tot heeft, uitegevoerd worden. 
+Met deze stappen kunnen alle services in VWI, waar de organisatie toegang tot heeft, uitegevoerd worden. 
 
 
 
