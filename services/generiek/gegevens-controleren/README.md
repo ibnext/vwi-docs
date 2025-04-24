@@ -1,5 +1,7 @@
 # Gegevens controleren
 
+`Gegevens controleren` stap.
+
 **Response**
 
 | Variable                                    | Type       | Verplicht? | Toelichting                                                                                                                                                             |

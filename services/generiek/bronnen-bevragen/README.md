@@ -1,6 +1,6 @@
 # Bronnen bevragen
 
-`Bronnen Bevragen` stap in het Verzoekservice IIT proces.
+`Bronnen Bevragen` stap.
 
 **Request**
 

@@ -21,10 +21,10 @@
 
 Dit zijn de huidige en toekomstige beschikbare services:
 
-| Service | Beschikbaar     | Documentatie                     |
-|---------|-----------------|----------------------------------|
-| iit     | Ja              | [Docs](./services/iit/readme.md) |
-| alo     | In ontwikkeling | [Docs](./services/alo/readme.md) |
+| Service                     | Afkorting | Beschikbaar     | Documentatie                     |
+|-----------------------------|-----------|-----------------|----------------------------------|
+| Individuele Inkomenstoeslag | IIT       | Ja              | [Docs](./services/iit/readme.md) |
+| Algemene Bijstand           | AB        | In ontwikkeling | [Docs](./services/ab/readme.md)  |
 
 ## Doelgroep
 

@@ -1,5 +1,7 @@
 # Resultaat terugsturen
 
+`Resultaat terugsturen` stap.
+
 **Response**
 
 | Variable                          | Type         | Verplicht? | Toelichting                                                                                                                                                                                                                                           |

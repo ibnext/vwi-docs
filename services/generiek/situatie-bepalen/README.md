@@ -1,4 +1,5 @@
 # Situatie Bepalen
-`Situatie bepalen` stap in het Verzoekservice IIT proces.
+
+`Situatie bepalen` stap.
 
 | Nog geen request of response |

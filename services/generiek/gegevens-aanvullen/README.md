@@ -1,6 +1,6 @@
 # Gegevens aanvullen
 
-`Gegevens aanvullen` stap in het Verzoekservice IIT proces.
+`Gegevens aanvullen` stap.
 
 **Request**
 
