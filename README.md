@@ -6,6 +6,10 @@
 
 1. [Generieke bouwblokken](services/generiek/README.md)
     - [Bronnen bevragen](services/generiek/bronnen-bevragen/README.md)
+    - [Gegevens aanvullen](services/generiek/gegevens-aanvullen/README.md)
+    - [Gegevens controleren](services/generiek/gegevens-controleren/README.md)
+    - [Resultaat terugsturen](services/generiek/resultaat-terugsturen/README.md)
+    - [Situatie bepalen](services/generiek/situatie-bepalen/README.md)
 
 2. [VWI API and Portaal](README.md)
     - [Portaal](README.md#portaal)
