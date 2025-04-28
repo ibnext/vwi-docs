@@ -4,14 +4,14 @@
 
 **Request**
 
-| Variable    | Type     | Verplicht? | Toelichting                                                                                                                                       |
-|-------------|----------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
-| referenceID | `String` | Ja         | xxx                                                                                                                                               |
-| requestType | `String` | Ja         | xxx                                                                                                                                               |
-| datBPeriode | `String` | Ja         | peildatum - 3 jaar                                                                                                                                | 
-| datEPeriode | `String` | Ja         | peildatum                                                                                                                                         |
-| oin         | `String` | Ja         | OIN nummer van de bevragende instantie                                                                                                            |
-| testMode    | `String` | Nee        | Wanneer de bkwi-mock bronbevraging gewenst is. Geldige waarden zijn "standard" voor een standaard response of "randomise" voor willekeurige data. |
+| Variable    | Type     | Verplicht? | Toelichting                                                                                                                                                                                                          |
+|-------------|----------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| referenceID | `String` | Ja         | xxx                                                                                                                                                                                                                  |
+| requestType | `String` | Ja         | xxx                                                                                                                                                                                                                  |
+| datBPeriode | `String` | Ja         | peildatum - 3 jaar                                                                                                                                                                                                   | 
+| datEPeriode | `String` | Ja         | peildatum                                                                                                                                                                                                            |
+| oin         | `String` | Ja         | OIN nummer van de bevragende instantie                                                                                                                                                                               |
+| testMode    | `String` | Nee        | Wanneer de bkwi-mock bronbevraging gewenst is. Geldige waarden zijn <br/>"standard" voor een standaard response of "randomise" voor willekeurige data.<br/>Bij "none" en iedere andere waarde staat de testMode uit. |
 
 **Response**
 
