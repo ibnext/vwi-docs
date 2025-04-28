@@ -4,13 +4,14 @@
 
 **Request**
 
-| Variable    | Type     | Verplicht? | Toelichting                            |
-|-------------|----------|------------|----------------------------------------|
-| referenceID | `String` | Ja         | xxx                                    |
-| requestType | `String` | Ja         | xxx                                    |
-| datBPeriode | `String` | Ja         | peildatum - 3 jaar                     | 
-| datEPeriode | `String` | Ja         | peildatum                              |
-| oin         | `String` | Ja         | OIN nummer van de bevragende instantie |
+| Variable    | Type     | Verplicht? | Toelichting                                                                                                                                       |
+|-------------|----------|------------|---------------------------------------------------------------------------------------------------------------------------------------------------|
+| referenceID | `String` | Ja         | xxx                                                                                                                                               |
+| requestType | `String` | Ja         | xxx                                                                                                                                               |
+| datBPeriode | `String` | Ja         | peildatum - 3 jaar                                                                                                                                | 
+| datEPeriode | `String` | Ja         | peildatum                                                                                                                                         |
+| oin         | `String` | Ja         | OIN nummer van de bevragende instantie                                                                                                            |
+| testMode    | `String` | Nee        | Wanneer de bkwi-mock bronbevraging gewenst is. Geldige waarden zijn "standard" voor een standaard response of "randomise" voor willekeurige data. |
 
 **Response**
 
