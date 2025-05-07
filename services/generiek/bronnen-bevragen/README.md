@@ -12,7 +12,20 @@
 | datEPeriode  | `String` | Ja         | peildatum                                                                                                                                                                                                            |
 | oin          | `String` | Ja         | OIN nummer van de bevragende instantie                                                                                                                                                                               |
 | testMode     | `String` | Nee        | Wanneer de bkwi-mock bronbevraging gewenst is. Geldige waarden zijn <br/>"standard" voor een standaard response of "randomise" voor willekeurige data.<br/>Bij "none" en iedere andere waarde staat de testMode uit. |
-| bkwi_verzoek | `String` | Ja         | De naam van de bkwi bronbevraging. Geldige waarden zijn:<br/>"brp_domicilie", "brp_huwelijk", "brp_partner", "brp_overige_inwonende", "brp_gezamelijk_huishouden" en "uwv_ikv"                                       |
+| bkwi_verzoek | `String` | Ja         | Zie [BKWI verzoek](#bkwi-verzoek) voor geldige waarden.                                                                                                                                                              |                                                                                                                                                                                                              |
+
+### BKWI verzoek
+
+Hieronder een overzicht van de verschillende BKWI verzoeken die gedaan kunnen worden.
+
+| BKWI verzoek              | Toelichting                                                                  |
+|---------------------------|------------------------------------------------------------------------------|
+| uwv_ikv                   | De inkomstenopgaven van het UWV.                                             |
+| brp_domicilie             | De gegevens van de burger die op het adres van de burger staan ingeschreven. |
+| brp_huwelijk              | De gegevens van de (historisch) huwelijk van de burger.                      |
+| brp_partner               | De gegevens van de partner van de burger.                                    |
+| brp_overige_inwonende     | De gegevens van de overige inwonende op het adres van de burger.             |
+| brp_gezamelijk_huishouden | De gegevens van het huishouden van de burger.                                |
 
 ## Response
 
