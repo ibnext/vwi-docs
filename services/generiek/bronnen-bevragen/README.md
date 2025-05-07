@@ -2,18 +2,19 @@
 
 `Bronnen Bevragen` stap.
 
-**Request**
+## Request
 
-| Variable    | Type     | Verplicht? | Toelichting                                                                                                                                                                                                          |
-|-------------|----------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| referenceID | `String` | Ja         | xxx                                                                                                                                                                                                                  |
-| requestType | `String` | Ja         | xxx                                                                                                                                                                                                                  |
-| datBPeriode | `String` | Ja         | peildatum - 3 jaar                                                                                                                                                                                                   | 
-| datEPeriode | `String` | Ja         | peildatum                                                                                                                                                                                                            |
-| oin         | `String` | Ja         | OIN nummer van de bevragende instantie                                                                                                                                                                               |
-| testMode    | `String` | Nee        | Wanneer de bkwi-mock bronbevraging gewenst is. Geldige waarden zijn <br/>"standard" voor een standaard response of "randomise" voor willekeurige data.<br/>Bij "none" en iedere andere waarde staat de testMode uit. |
+| Variable     | Type     | Verplicht? | Toelichting                                                                                                                                                                                                          |
+|--------------|----------|------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| referenceID  | `String` | Ja         | xxx                                                                                                                                                                                                                  |
+| requestType  | `String` | Ja         | xxx                                                                                                                                                                                                                  |
+| datBPeriode  | `String` | Ja         | peildatum - 3 jaar                                                                                                                                                                                                   | 
+| datEPeriode  | `String` | Ja         | peildatum                                                                                                                                                                                                            |
+| oin          | `String` | Ja         | OIN nummer van de bevragende instantie                                                                                                                                                                               |
+| testMode     | `String` | Nee        | Wanneer de bkwi-mock bronbevraging gewenst is. Geldige waarden zijn <br/>"standard" voor een standaard response of "randomise" voor willekeurige data.<br/>Bij "none" en iedere andere waarde staat de testMode uit. |
+| bkwi_verzoek | `String` | Ja         | De naam van de bkwi bronbevraging. Geldige waarden zijn:<br/>"brp_domicilie", "brp_huwelijk", "brp_partner", "brp_overige_inwonende", "brp_gezamelijk_huishouden" en "uwv_ikv"                                       |
 
-**Response**
+## Response
 
 | Variable                  | Type    | Verplicht? | Toelichting                                                     |
 |---------------------------|---------|------------|-----------------------------------------------------------------|
