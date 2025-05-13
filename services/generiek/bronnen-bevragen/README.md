@@ -53,5 +53,7 @@ Ieder BKWI verzoek kan een eigen error response geven. De error komt terug in de
 | brp_overige_inwonende     | De bronbevraging voor overige inwonende op het adres van de aanvrager is gelukt maar zonder resultaten | `Geen gegevens van overige inwonenden gevonden`  |
 | brp_gezamelijk_huishouden | De bronbevraging voor gegevens over het gezamenlijk huishouden is gelukt maar zonder resultaten        | `Geen gegevens gezamenlijk huishouden gevonden`  |
 
-Afhankelijke van het type bronbevraging en de error, kan het proces verder gaan of stoppen. Dit is afhankelijk van
+Naast de error response wordt ook de `ReferenceID` bij het bericht gevoegd.
+
+Afhankelijk van het type bronbevraging en de error, kan het proces verder gaan of stoppen. Dit is afhankelijk van
 de soort verzoekservice.
