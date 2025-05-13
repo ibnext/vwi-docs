@@ -1,6 +1,6 @@
 # Individuele inkomenstoeslag (IIT)
 
-## Uitkomt van de Individuele Inkomenstoeslag (IIT) service
+## Uitkomst van de Individuele Inkomenstoeslag (IIT) service
 
 De laatste stap van de IIT is waarin de resultaten van de toetsing worden teruggestuurd, is de
 stap [resultaat terugsturen](../generiek/resultaat-terugsturen/README.md).
