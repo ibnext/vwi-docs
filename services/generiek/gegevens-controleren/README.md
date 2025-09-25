@@ -4,38 +4,61 @@
 
 **Response**
 
+| Variable         | Type    | Verplicht? | Toelichting                    |
+|------------------|---------|------------|--------------------------------|
+| brp_domicilie    | `array` | Nee        | Domicilie van de burger        |
+
+**brp_domicilie (object in array):**
+
+| Variable         | Type      | Verplicht? | Toelichting                                                                 |
+|------------------|-----------|------------|----------------------------------------------------------------------------|
+| datBAdresBuitenland | `date`    | Nee        | Begindatum buitenlands adres                                                |
+| huisnr           | `integer` | Nee        | Het huisnummer van het adres van de burger                                 |
+| huisletter       | `string`  | Nee        | Een alfabetisch teken als toevoeging op het huisnummer                     |
+| huisnrtoevoeging | `string`  | Nee        | De letters die nodig zijn als toevoeging op het huisnummer of huisletter   |
+| postcd           | `string`  | Nee        | De postcode van het adres van de burger                                    |
+| woonplaatsnaam   | `string`  | Nee        | De woonplaatsnaam van het adres van de burger                              |
+| gemeentedeel     | `string`  | Nee        | Het geografisch gebied wat een deel is van het gemeentelijk grondgebied    |
+
+| Variable                    | Type    | Verplicht? | Toelichting                         |
+|-----------------------------|---------|------------|-------------------------------------|
+| verschillende_verhoudingen  | `array` | Nee        | Unieke werkgevers (afgeleid uit IKV) |
+| uwv_ikv_bruto_aanvrager     | `array` | Nee        | De inkomstenopgaven van het UWV     |
+**verschillende_verhoudingen (object in array):**
+
+Array van objecten die elke unieke werkgever vertegenwoordigen die is aangetroffen in `uwv_ikv_bruto_aanvrager`.
+De sleutel `organisatie` wordt gevuld met de waarde van `naam_administratieveEenheid`.
+De sleutels `datum_aanvang_inkomstenverhouding` en `datum_einde_inkomstenverhouding` komen 1-op-1 overeen met dezelfde velden in `uwv_ikv_bruto_aanvrager`.
+
+| Variable                          | Type     | Verplicht? | Toelichting                                                                          |
+|-----------------------------------|----------|------------|--------------------------------------------------------------------------------------|
+| organisatie                       | `string` | Nee        | Naam van de administratieve eenheid (uit `naam_administratieveEenheid`)             |
+| datum_aanvang_inkomstenverhouding | `date`   | Nee        | Eerste dag waarop de inkomstenverhouding geldig is                                   |
+| datum_einde_inkomstenverhouding   | `date`   | Nee        | Laatste dag van de inkomstenverhouding                                               |
+
+
+**uwv_ikv_bruto_aanvrager (object in array):**
+
 | Variable                                    | Type       | Verplicht? | Toelichting                                                                                                                                                             |
 |---------------------------------------------|------------|------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| brp_domicilie                               | `array`    | Nee        | domicilie van de burger                                                                                                                                                 |
-| --------                                    | -------    | ---------  | -------                                                                                                                                                                 |
-| datBAdresBuitenland                         | `date`     | Nee        | Begindatum buitenlands adres                                                                                                                                            |
-| huisnr                                      | `integer`  | Nee        | Het huisnummer van het adres van de burger                                                                                                                              
-| huisletter                                  | `string`   | Nee        | Een alfabetisch teken als toevoeging op het huisnummer                                                                                                                  |
-| huisnrtoevoeging                            | `string`   | Nee        | de letters die nodig zijn als toevoeging op het huisnummer of huisletter                                                                                                |
-| postcd                                      | `string`   | Nee        | de postcode van het adres van de burger                                                                                                                                 |
-| woonplaatsnaam                              | `string`   | Nee        | De woonplaatsnaam van het adres van de burger                                                                                                                           | 
-| gemeentedeel                                | `string`   | Nee        | het geografisch gebied wat een deel is van het gemeentelijk grondgebied                                                                                                 
-| --------                                    | -------    | ---------  | -------                                                                                                                                                                 |
-| uwv_ikv                                     | `array`    | Nee        | De inkomstenopgaven van het UWV                                                                                                                                         |
-| --------                                    | -------    | ---------  | -------                                                                                                                                                                 |
-| datum_begin_inkomstenperiode                | `date`     | Nee        | begindatum van de datum_begin_inkomstenperiode                                                                                                                          |
-| datum_einde_inkomstenperiode                | `date`     | Nee        | de einddatum van de datum_begin_inkomstenperiode                                                                                                                        | 
-| code_soort_inkomstenverhouding              | `string`   | Nee        | de code ter aanduiding van het soort inkomstenverhouding                                                                                                                | 
+| datum_begin_inkomstenperiode                | `date`     | Nee        | Begindatum van de datum_begin_inkomstenperiode                                                                                                                          |
+| datum_einde_inkomstenperiode                | `date`     | Nee        | De einddatum van de datum_begin_inkomstenperiode                                                                                                                        | 
+| code_soort_inkomstenverhouding              | `string`   | Nee        | De code ter aanduiding van het soort inkomstenverhouding                                                                                                                | 
 | omschrijving_code_soort_inkomstenverhouding | `string`   | Nee        | Omschrijving van de code ter aanduiding van het soort inkomstenverhouding                                                                                               | 
-| naam_administratieveEenheid                 | `string`   | Nee        | Een administratieve eenheid is een door de belastingdienst en UWV erkende organisatorische eenheid, die door een inhoudingsplichtige wordt uitgever                     
+| naam_administratieveEenheid                 | `string`   | Nee        | Een administratieve eenheid is een door de belastingdienst en UWV erkende organisatorische eenheid, die door een inhoudingsplichtige wordt uitgever                     |
 | datum_aanvang_inkomstenverhouding           | `date`     | Nee        | De datum van de eerste dag waarop de inkomstenverhouding geldig is                                                                                                      |
-| datum_einde_inkomstenverhouding             | `date`     | Nee        | datum laatste dat van de inkomstenverhouding                                                                                                                            |
-| datum_aanvang_inkomstenopgave               | `date`     | Nee        | de datum van de eerste dag van de inkomstenopgave                                                                                                                       |
-| datum_einde_inkomstenopgave                 | `date`     | Nee        | de datum van de laatste dag van de inkomstenopgave                                                                                                                      | 
-| loon_sv                                     | `currency` | Nee        | het bedrag dat in totaal in het aangiftetijdvak door de administratieve eenheid is vastgesteld aan loon voor de werknemersverzekeringen                                 |
-| inhouding_lbph_totaal                       | `currency` | Nee        | het bedrag dat in totaal in het aangiftetijdvlak aan loonbelasting en premie volksverzekeringen is ingehouden                                                           |
+| datum_einde_inkomstenverhouding             | `date`     | Nee        | Datum laatste dag van de inkomstenverhouding                                                                                                                            |
+| datum_aanvang_inkomstenopgave               | `date`     | Nee        | De datum van de eerste dag van de inkomstenopgave                                                                                                                       |
+| datum_einde_inkomstenopgave                 | `date`     | Nee        | De datum van de laatste dag van de inkomstenopgave                                                                                                                      | 
+| loon_sv                                     | `currency` | Nee        | Het bedrag dat in totaal in het aangiftetijdvak door de administratieve eenheid is vastgesteld aan loon voor de werknemersverzekeringen                                 |
+| inhouding_lbph_totaal                       | `currency` | Nee        | Het bedrag dat in totaal in het aangiftetijdvlak aan loonbelasting en premie volksverzekeringen is ingehouden                                                           |
 | inhoudingen_lbph_bijzonder                  | `currency` | Nee        | Dat deel van het loon LB/PH dat is belast onder toepassing van de tabel bijzondere beloningen                                                                           |
 | loon_lbph_totaal                            | `currency` | Nee        | Het bedrag dat in totaal in het aangiftetijdvak door de administratieve eenheid is vastgesteld aan loon dat onderworpen is aan loonbelasting/premie volksverzekeringen. |
-| inhouding_zvw_premie                        | `currency` | Nee        | Het bedrag dat in het aangiftetijdvak door de administratieve eenheid als werkgeversheffing vvoor de Zvw wordt afgedragen.                                              |
+| inhouding_zvw_premie                        | `currency` | Nee        | Het bedrag dat in het aangiftetijdvak door de administratieve eenheid als werkgeversheffing voor de Zvw wordt afgedragen.                                               |
 | waarde_gebruik_auto                         | `currency` | Nee        | Het bedrag van de forfaitaire waarde van het privégebruik van een aan de werknemer ter beschikking gestelde auto vóór aftrek van de eigen bijdrage van de werknemer.    |
 | code_loontijdvak                            | `integer`  | Nee        | Een code die aangeeft in welk tijdvak het loon uitbetaald is                                                                                                            |
 | code_loonbelastingtabel                     | `string`   | Nee        | Een code waarmee aangegeven wordt welke tabel voor de inhouding van LB/PH is toegepast                                                                                  |
 | omschrijving_code_loonbelastingtabel        | `string`   | Nee        | Omschrijving van een code waarmee aangegeven wordt welke tabel voor de inhouding van LB/PH is toegepast                                                                 |
 | opgb_recht_vakantietoeslag                  | `currency` | Nee        | Het bedrag van de vakantietoeslag die tot dan toe is opgebouwd.                                                                                                         |
 | vakantietoeslag                             | `currency` | Nee        | Het bedrag van de daadwerkelijke uitbetaling van de vakantietoeslag.                                                                                                    |
-| loonheffingskorting_toegepast               | `string`   | Nee        | Een indicatie of er op dit inkomen loonfheffingskorting is toegepast                                                                                                    |
+| loonheffingskorting_toegepast               | `string`   | Nee        | Een indicatie of er op dit inkomen loonheffingskorting is toegepast                                                                                                     |

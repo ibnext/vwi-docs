@@ -1,5 +1,26 @@
 # Individuele inkomenstoeslag (IIT)
 
+Voor nu ondersteunt de service alleen de IIT voor alleenstaanden. 
+De service wordt in de toekomst uitgebreid met de IIT voor samenwonenden.
+
+De IIT voor alleenstaanden bestaat uit 3 stappen:
+
+1. **aanvullen gegevens**
+
+   Bij deze stap moeten 3 velden worden ingevuld:
+   - een geldig bsn (burgerservicenummer)
+   - een clientnummer welke een vrij tekstveld is en als referentie voor de consulent is bedoeld.
+   - een peildatum die bepaald tot welke dag het onderzoek wordt toegepast.
+
+   Voor de namen en types van de variabelen die nodig zijn, zie [gegevens aanvullen](../generiek/gegevens-aanvullen/README.md).
+
+   Bij stap 1 wordt een bevraging gedaan die de inkomensgegevens opvraagt die bekend zijn bij het UWV.
+   De response van stap 1 bestaat uit de variabelen "verschillende_verhoudingen" en "uwv_ikv_bruto_aanvrager".
+
+   **Note:** zorg dat het clientnummer vrij is van privacy-gevoelige informatie.
+   
+   **Note:** de peildatum wordt voor het onderzoek altijd teruggezet naar de eerste dag van de maand van de peildatum zodat alleen hele maanden worden meegenomen.
+
 ## Uitkomst van de Individuele Inkomenstoeslag (IIT) service
 
 De laatste stap van de IIT is waarin de resultaten van de toetsing worden teruggestuurd, is de
