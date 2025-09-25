@@ -1,4 +1,5 @@
 # Ping
+
 `Ping` stap in het ping pong proces.
 
 **Request**
