@@ -3,14 +3,14 @@
 Voor nu ondersteunt de service alleen de IIT voor alleenstaanden. 
 De service wordt in de toekomst uitgebreid met de IIT voor samenwonenden.
 
-De IIT voor alleenstaanden bestaat uit 2 stappen:
+De IIT voor alleenstaanden bestaat uit twee stappen:
 
 1. Het starten van de service. 
 
-   Bij deze stap moeten 3 velden worden ingevuld:
-   - een geldig bsn (burgerservicenummer)
-   - een clientnummer welke een vrij tekstveld is en als referentie voor de consulent is bedoeld.
-   - een peildatum die bepaald tot welke dag het onderzoek wordt toegepast.
+   Bij deze stap moeten drie velden worden ingevuld:
+   - een geldig BSN (burgerservicenummer)
+   - een clientnummer dat een vrij tekstveld is en als referentie voor de consulent is bedoeld.
+   - een peildatum die bepaalt tot welke dag het onderzoek wordt toegepast.
 
    ## Request
 
@@ -22,9 +22,9 @@ De IIT voor alleenstaanden bestaat uit 2 stappen:
 
    Aan de hand van deze gegevens wordt een bevraging gedaan die de inkomensgegevens opvraagt die bekend zijn bij het UWV.
 
-   **Note:** zorg dat het clientnummer vrij is van privacy-gevoelige informatie.
+   **Note:** Zorg dat het clientnummer vrij is van privacy-gevoelige informatie.
    
-   **Note:** de peildatum wordt voor het onderzoek altijd teruggezet naar de eerste dag van de maand van de peildatum zodat alleen hele maanden worden meegenomen.
+   **Note:** De peildatum wordt voor het onderzoek altijd teruggezet naar de eerste dag van de maand van de peildatum zodat alleen hele maanden worden meegenomen.
 
    De response van deze stap bevat de variabelen "verschillende_verhoudingen" en "uwv_ikv_bruto_aanvrager". De "verschillende_verhoudingen" zijn bedoeld ter informatie. De data uit "uwv_ikv_bruto_aanvrager" wordt gebruikt in de volgende stap en kan eventueel aangepast worden.
 
@@ -83,7 +83,7 @@ De IIT voor alleenstaanden bestaat uit 2 stappen:
    |---------------------------|-----------|------------|-----------------------------------------------------------------------------|
    | uwv_ikv_bruto_aanvrager   | `array`   | Ja         | Inkomensgegevens van de aanvrager, zoals opgehaald in stap 1                |
 
-   Zie voor de structuur van `uwv_ikv_bruto_aanvrager` de sectie [uwv_ikv_bruto_aanvrager (object in array)](../generiek/gegevens-controleren/README.md#uwv_ikv_bruto_aanvrager-object-in-array) in het document 'gegevens controleren'.
+   Zie voor de structuur van `uwv_ikv_bruto_aanvrager` [hierboven](#uwv_ikv_bruto_aanvrager-object-in-array).
 
    ## Response
    De response van deze stap is de uitkomst van de toetsing en bevat de volgende variabelen:
@@ -91,8 +91,8 @@ De IIT voor alleenstaanden bestaat uit 2 stappen:
    | Variable                                    | Type      | Verplicht? | Toelichting                                                                 |
    |---------------------------------------------|-----------|------------|-----------------------------------------------------------------------------|
    | algemene_gegevens_referteperiode            | `object`  | Nee        | Algemene gegevens over de referteperiode van de toetsing                     |
-   | uwv_ikv_netto_jaarlijks_aanvrager_1         | `array`   | Nee        | Jaarlijkse netto-inkomensgegevens van de aanvrager over de afgelopen 3 jaar  |
-   | uwv_ikv_netto_maandelijks_aanvrager_1       | `array`   | Nee        | Maandelijkse netto-inkomensgegevens van de aanvrager over de afgelopen 36 maanden |
+   | uwv_ikv_netto_jaarlijks_aanvrager_1         | `array`   | Nee        | Jaarlijkse netto-inkomensgegevens van de aanvrager over de referteperiode  |
+   | uwv_ikv_netto_maandelijks_aanvrager_1       | `array`   | Nee        | Maandelijkse netto-inkomensgegevens van de aanvrager over de referteperiode |
    | uwv_ikv_ongeschikte_inkomstenopgaven_aanvrager_1 | `array` | Nee        | Inkomensopgaven die niet geschikt zijn voor de toetsing                      |
 
    ### Toelichting op de response-velden:

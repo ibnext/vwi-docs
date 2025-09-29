@@ -164,4 +164,4 @@ en is het resultaat het eind resultaat.
 }
 ```
 
-Met deze stappen kunnen alle services in VWI, waar de organisatie toegang tot heeft, uitegevoerd worden.
+Met deze stappen kunnen alle services in VWI, waar de organisatie toegang tot heeft, uitgevoerd worden.

@@ -49,7 +49,7 @@ een [Diginetwerk](https://www.logius.nl/domeinen/infrastructuur/diginetwerk) ver
  / \         [             ]  ----> [ API ]
 ```
 
-Nadat de diginetwerk verbinding tot stand is gebracht moet de juiste authenticate methode gebruikt worden afhankelijk
+Nadat de diginetwerk verbinding tot stand is gebracht moet de juiste authenticatiemethode gebruikt worden afhankelijk
 van de gekozen route.
 
 ### Portaal
@@ -63,10 +63,10 @@ Endpoint: <API URL>/vwi\
 Type: GraphQL\
 Methode: POST
 
-Om toegang to de VWI API te krijgen, is het volgende nodig:
+Om toegang tot de VWI API te krijgen, is het volgende nodig:
 1. Een `PKI-overheids` certificaat. Deze dient bij elk verzoek meegestuurd te worden. 
 Verzoeken zonder geldig certificaat worden geblokkeerd.
-1. Een gebruiker met toegang API-toegang.
+1. Een gebruiker met API-toegang.
 1. Een geldige API-key die wordt meegegeven in de `subscription-key` header.
 
 > Zowel de API-gebruiker als API-key worden door BIDN geleverd.
@@ -78,7 +78,7 @@ Ook zal het GraphQL schema geleverd worden voor de definitie van de API.
 
 #### Service start, vervolg en einde
 
-Alle services bestaan uit 1 of meerdere stappen. 
+Alle services bestaan uit één of meerdere stappen. 
 
 ### Beschikbare services opvragen
 Gebruik de `query Services` om een lijst van beschikbare services op te vragen voordat u een service start.
@@ -105,6 +105,6 @@ De laatste stap wordt aangegeven wanneer de `variables` lijst een object bevat m
 
 ## Services
 
-Op dit moment biedt BIDN de volgende service(s) aan:
+Op dit moment biedt BIDN de volgende service aan:
 
 * [Individuele inkomenstoeslag (IIT)](./services/IIT/README.md) voor meer informatie over de IIT service.
