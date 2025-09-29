@@ -4,19 +4,19 @@
 
 # Inhoudsopgave
 
-1. [Generieke bouwblokken](services/generiek/README.md)
-    - [Bronnen bevragen](services/generiek/bronnen-bevragen/README.md)
-    - [Gegevens aanvullen](services/generiek/gegevens-aanvullen/README.md)
-    - [Gegevens controleren](services/generiek/gegevens-controleren/README.md)
-    - [Resultaat terugsturen](services/generiek/resultaat-terugsturen/README.md)
-    - [Situatie bepalen](services/generiek/situatie-bepalen/README.md)
-
-2. [VWI API and Portaal](README.md)
+1. [VWI API and Portaal](README.md)
     - [Doelgroep](README.md#doelgroep)
     - [Aansluiten](README.md#aansluiten)
         - [Diginetwerk](README.md#diginetwerk)
         - [Portaal](README.md#portaal)
         - [API](README.md#api)
+        - [Service start, vervolg en einde](README.md#service-start-vervolg-en-einde)
+            - [Beschikbare services opvragen](README.md#beschikbare-services-opvragen)
+            - [Service starten](README.md#service-starten)
+            - [Service vervolgen](README.md#service-vervolgen)
+            - [Response object](README.md#response-object)
+            - [Service einde](README.md#service-einde)
+    - [Services](README.md#services)
     - [Lees verder](README.md#lees-verder)
         - [Technische documentatie GraphQL API](./vwi-graphql-api.md)
         - [Voorbeeld API gebruik](./voorbeeld-api-gebruik.md)
@@ -25,8 +25,8 @@ Dit zijn de huidige en toekomstige beschikbare services:
 
 | Service                     | Afkorting | Beschikbaar     | Documentatie                     |
 |-----------------------------|-----------|-----------------|----------------------------------|
-| Individuele Inkomenstoeslag | IIT       | Ja              | [Docs](./services/iit/readme.md) |
-| Algemene Bijstand           | AB        | In ontwikkeling | [Docs](./services/ab/readme.md)  |
+| Individuele Inkomenstoeslag | IIT       | Ja              | [Docs](./services/IIT/README.md) |
+| Algemene Bijstand           | AB        | In ontwikkeling | [Docs](./services/AB/README.md)  |
 
 ## Doelgroep
 
@@ -76,6 +76,35 @@ aanmelden van uw organisatie.
 
 Ook zal het GraphQL schema geleverd worden voor de definitie van de API.
 
+#### Service start, vervolg en einde
+
+Alle services bestaan uit 1 of meerdere stappen. 
+
+### Beschikbare services opvragen
+Gebruik de `query Services` om een lijst van beschikbare services op te vragen voordat u een service start.
+
+### Service starten
+Elke service moet worden gestart met de `mutation ExecuteService` query.
+
+### Service vervolgen
+Alle opeenvolgende taken worden aangeroepen met behulp van de `mutation ExecuteTask` query.
+
+### Response object
+Beide mutations retourneren het `ExecuteServicePayload` object dat de volgende velden bevat:
+- `referenceID`: Dit ID blijft gedurende het hele proces hetzelfde
+- `results`: Een object van type `ServiceTask` dat bevat:
+  - `variables`: Bevat alle data voor de huidige stap
+  - `ID`: Representeert het ID voor de volgende stap en moet worden gebruikt als de `taskID` input voor de volgende `ExecuteTask` aanroep
+
+### Service einde
+De laatste stap wordt aangegeven wanneer de `variables` lijst een object bevat met de key `is_final_step` en waarde `true`. Dit betekent dat het proces/service is voltooid en er geen stappen meer over zijn. 
+
 ## Lees verder
 * [Technische documentatie GraphQL API](./vwi-graphql-api.md)
 * [Voorbeeld API gebruik](./voorbeeld-api-gebruik.md) voor uitgebreide voorbeelden van hoe de VWI API gebruikt kan worden. 
+
+## Services
+
+Op dit moment biedt BIDN de volgende service(s) aan:
+
+* [Individuele inkomenstoeslag (IIT)](./services/IIT/README.md) voor meer informatie over de IIT service.

@@ -37,15 +37,6 @@ De volgende uitvoeringsmutaties zijn toegestaan (mits de organisatie toegang hee
 - `executeService(input: { serviceID, variables })`: Toegestaan met dezelfde controles als `startCamundaProcess`.
 - `executeTask(input: { referenceID, taskID, variables })`: Toegestaan met dezelfde controles als `completeServiceTask`.
 
-Verwijzingen
-
-- Mutatie-definities: `svc/platform/transport/ent/schema/mutation.graphql`
-- Resolverlogica: `svc/platform/transport/ent/mutation.resolvers.go`
-- Security-checks voor uitvoering:
-  - `UserIsAllowedToStartProcess`: `svc/platform/internal/security/security.go`
-  - `UserIsAllowedToFetchProcess`: `svc/platform/internal/security/security.go`
-  - App-level guard bij het afronden van taken: `svc/platform/app/app.go`
-
 ## Opmerkingen
 
 - Organisatiescoping en categorie-/service-toegang bepalen de zichtbaarheid; `ROLE_API`-gebruikers kunnen services en categorieën zien die zijn toegewezen aan hun organisatie.

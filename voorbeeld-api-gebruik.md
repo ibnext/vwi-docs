@@ -113,7 +113,9 @@ Het resultaat ziet er dan uit als volgt:
 }
 ```
 
-Een service kan bestaan uit één of meerdere stappen, dit is terug te vinden in de documentatie van de service. Om de
+De `referenceID` blijgt voor de rest van de service en vervolgstappen hetzelfde.  
+De `results.ID` daarentegen, wordt gebruikt om de volgende stap uit te kunnen voeren.
+Een service kan bestaan uit één of meerdere stappen en dit is terug te vinden in de documentatie van de service. Om de
 volgende stap uit te voeren kan de onderstaande voorbeeld mutatie gebruikt worden.
 
 ```
