@@ -72,7 +72,7 @@ Om toegang tot de VWI API te krijgen, is het volgende nodig:
 
 > Zowel de API-gebruiker als API-key worden door BIDN geleverd.
 
-De API van VWI maakt gebruik van GraphQL, de URL van de API inclusief het schema worden ter beschikking gesteld na het
+De API van VWI maakt gebruik van GraphQL. De URL van de API inclusief het schema worden ter beschikking gesteld na het
 aanmelden van uw organisatie.
 
 Ook zal het GraphQL schema geleverd worden voor de definitie van de API.
