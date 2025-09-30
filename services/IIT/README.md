@@ -3,6 +3,8 @@
 Voor nu ondersteunt de service alleen de IIT voor alleenstaanden.
 De service wordt in de toekomst uitgebreid met de IIT voor samenwonenden.
 
+In dit document vindt u een overzicht van alle variabelen die vereist zijn voor elk request en die u kunt verwachten in de response.
+
 De IIT voor alleenstaanden bestaat uit twee stappen:
 
 1. Het starten van de service.
