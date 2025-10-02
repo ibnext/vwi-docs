@@ -1,30 +1,32 @@
 # Verzoekservices werk en inkomen
 
-*Versie: 0.10.2*
+_Versie: 0.10.2_
 
-# Table of Contents
+# Inhoudsopgave
 
-1. [Generieke bouwblokken](services/generiek/README.md)
-    - [Bronnen bevragen](services/generiek/bronnen-bevragen/README.md)
-    - [Gegevens aanvullen](services/generiek/gegevens-aanvullen/README.md)
-    - [Gegevens controleren](services/generiek/gegevens-controleren/README.md)
-    - [Resultaat terugsturen](services/generiek/resultaat-terugsturen/README.md)
-    - [Situatie bepalen](services/generiek/situatie-bepalen/README.md)
-
-2. [VWI API and Portaal](README.md)
-    - [Portaal](README.md#portaal)
-    - [API](README.md#api)
-        - [GraphQL Queries](README.md#graphql-queries)
-        - [GraphQL Mutations](README.md#graphql-mutations)
-            - [Execute Service](README.md#execute-service)
-            - [Execute Task](README.md#execute-task)
+1. [VWI API and Portaal](README.md)
+   - [Doelgroep](README.md#doelgroep)
+   - [Aansluiten](README.md#aansluiten)
+     - [Diginetwerk](README.md#diginetwerk)
+     - [Portaal](README.md#portaal)
+     - [API](README.md#api)
+       - [Service start, vervolg en einde](README.md#service-start-vervolg-en-einde)
+         - [Beschikbare services opvragen](README.md#beschikbare-services-opvragen)
+         - [Service starten](README.md#service-starten)
+         - [Service vervolgen](README.md#service-vervolgen)
+         - [Response object](README.md#response-object)
+         - [Service einde](README.md#service-einde)
+   - [Lees verder](README.md#lees-verder)
+     - [Technische documentatie GraphQL API](./vwi-graphql-api.md)
+     - [Voorbeeld API gebruik](./voorbeeld-api-gebruik.md)
+   - [Services](README.md#services)
 
 Dit zijn de huidige en toekomstige beschikbare services:
 
 | Service                     | Afkorting | Beschikbaar     | Documentatie                     |
-|-----------------------------|-----------|-----------------|----------------------------------|
-| Individuele Inkomenstoeslag | IIT       | Ja              | [Docs](./services/iit/readme.md) |
-| Algemene Bijstand           | AB        | In ontwikkeling | [Docs](./services/ab/readme.md)  |
+| --------------------------- | --------- | --------------- | -------------------------------- |
+| Individuele Inkomenstoeslag | IIT       | Ja              | [Docs](./services/IIT/README.md) |
+| Algemene Bijstand           | AB        | In ontwikkeling | [Docs](./services/AB/README.md)  |
 
 ## Doelgroep
 
@@ -32,13 +34,13 @@ Gemeentes en softwareleveranciers die werken in opdracht van een gemeente.
 
 ## Aansluiten
 
-Indien u of uw softwareleverancier van de dienst gebruik wil maken, kunt u bij de Servicedesk van het Inlichtingenbureau
+Indien u of uw softwareleverancier van de dienst gebruik wil maken, kunt u bij de Servicedesk van BIDN
 een aanvraagformulier verzoeken. Geef hierbij aan of u gebruik wilt maken van de API of het Portaal of beide en ook
 welke services binnen VWI u wilt afnemen.
 
 ### Diginetwerk
 
-Om Aan te sluiten of gebruik te maken van de VWI services is er
+Om aan te sluiten of gebruik te maken van de VWI services is er
 een [Diginetwerk](https://www.logius.nl/domeinen/infrastructuur/diginetwerk) verbinding nodig.
 
 ```
@@ -47,194 +49,70 @@ een [Diginetwerk](https://www.logius.nl/domeinen/infrastructuur/diginetwerk) ver
  / \         [             ]  ----> [ API ]
 ```
 
-Nadat de diginetwerk verbinding tot stand is gebracht moet de juiste authenticate methode gebruikt worden afhankelijk
+Nadat de diginetwerk verbinding tot stand is gebracht moet de juiste authenticatiemethode gebruikt worden afhankelijk
 van de gekozen route.
 
-### Portaal
+## Portaal
 
 Voor het webportaal van VWI dient u te beschikken over een e-herkenning account. Nadat uw organisatie is geregistreerd
 bij VWI kunt u met behulp van uw e-herkenning account inloggen.
 
-### API
+## API
 
 Endpoint: <API URL>/vwi\
 Type: GraphQL\
 Methode: POST
 
-Voor het gebruik van de API is een `PKI-overheids` certificaat nodig, deze dient bij elk verzoek meegestuurd te worden.
-Verzoeken zonder geldig certificaat worden geblokkeerd.
+Om toegang tot de VWI API te krijgen, is het volgende nodig:
 
-Naast een geldig certifcaat moet er ook altijd een geldige API-key worden meegegeven in de `subscription-key` header.
-Deze API-Key wordt aangeleverd door het Inlichtingenbureau na het aanmelden van uw organisatie.
+1. Een `PKI-overheids` certificaat. Deze dient bij elk verzoek meegestuurd te worden.
+   Verzoeken zonder geldig certificaat worden geblokkeerd.
+1. Een gebruiker met API-toegang.
+1. Een geldige API-key die wordt meegegeven in de `subscription-key` header.
 
-De API van VWI maakt gebruik van GraphQL, de URL van de API inclusief het schema worden ter beschikking gesteld na het
+> Zowel de API-gebruiker als API-key worden door BIDN geleverd.
+
+De API van VWI maakt gebruik van GraphQL. De URL van de API inclusief het schema worden ter beschikking gesteld na het
 aanmelden van uw organisatie.
 
-Om te testen of de connectie werkt kan de volgende query gebruikt worden:
+Ook zal het GraphQL schema geleverd worden voor de definitie van de API.
 
-```
-headers:
-Content-Type: application/json
-subscription-key: <api key>
+### Service start, vervolg en einde
 
-query Me {
-    me {
-        user {
-            id
-            name
-            email
-            organisation{
-                id
-                name
-                kvk
-            }
-        }
-    }
-}
-```
+Alle services bestaan uit één of meerdere stappen.
 
-Hierna kunnen alle beschikbare services voor de ingelogde organisatie opgehaald worden als volgt:
+#### Beschikbare services opvragen
 
-```
-query Services {
-    services {
-        pageInfo{
-            hasNextPage
-            hasPreviousPage
-        }
-        totalCount
-        edges{
-            cursor
-            node{
-                id,
-                name,
-                description
-                camundaid
-                category {           
-                    id            
-                    name
-                }
-            }
-        }
-        
-    }
-}
-```
+Gebruik de `query Services` om een lijst van beschikbare services op te vragen voordat u een service start.
 
-Vervolgens kan u een service uitvoeren, variables die nodig zijn verschillen per service en zijn terug te vinden in de
-documentatie van de specifieke service.
+#### Service starten
 
-Hieronder nemen we een voorbeeld service (PING PONG), de documentatie van deze service geeft aan dat de variable `name`
-verplicht is.
+Elke service moet worden gestart met de `mutation ExecuteService` query.
 
-**Request**
+#### Service vervolgen
 
-| Variable | Type     | Verplicht? | Toelichting           |
-|----------|----------|------------|-----------------------|
-| name     | `String` | Ja         | Naam van de aanvrager |
+Alle opeenvolgende taken worden aangeroepen met behulp van de `mutation ExecuteTask` query.
 
-**Response**
+#### Response object
 
-| Variable | Type               | Verplicht? | Toelichting                        |
-|----------|--------------------|------------|------------------------------------|
-| results  | `PingPongResponse` | Nee        | Resultaat van het Ping Pong proces |
+Beide mutations retourneren het `ExecuteServicePayload` object dat de volgende velden bevat:
 
-**PingPongResponse**
+- `referenceID`: Dit ID blijft gedurende het hele proces hetzelfde
+- `results`: Een object van type `ServiceTask` dat bevat:
+  - `variables`: Bevat alle data voor de huidige stap
+  - `ID`: Representeert het ID voor de volgende stap en moet worden gebruikt als de `taskID` input voor de volgende `ExecuteTask` aanroep
 
-| Variable | Type     | Verplicht? | Toelichting   |
-|----------|----------|------------|---------------|
-| name     | `String` | Nee        | Naam van Pong |
+#### Service einde
 
-```
-mutation ExecuteService {
-    executeService(input: {serviceID: "12884901888", variables: {
-        name: "name", value: "value"
-    }}) {        
-        referenceID
-        results{
-            id
-            variables{
-                name
-                value
-            }           
-        }
-    }
-}
-```
+De laatste stap wordt aangegeven wanneer de `variables` lijst een object bevat met de key `is_final_step` en waarde `true`. Dit betekent dat het proces/service is voltooid en er geen stappen meer over zijn.
 
-Het resultaat ziet er dan uit als volgt:
+### Lees verder
 
-```
-{
-    "data": {
-        "executeService": {
-            "referenceID": "b50de104-5367-41a3-ba27-5ccbdff24174",
-            "results": {
-                id: "123",
-                variables: [
-                    {
-                        "name": "results",
-                        "value": "{'name': 'pong'}"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
+- [Technische documentatie GraphQL API](./vwi-graphql-api.md)
+- [Voorbeeld API gebruik](./voorbeeld-api-gebruik.md) voor uitgebreide voorbeelden van hoe de VWI API gebruikt kan worden.
 
-Een service kan bestaan uit één of meerdere stappen, dit is terug te vinden in de documentatie van de service. Om de
-volgende stap uit te voeren kan de onderstaande voorbeeld mutatie gebruikt worden.
+## Services
 
-```
-mutation ExecuteTask {
-    executeTask(input: {
-        referenceID: "b50de104-5367-41a3-ba27-5ccbdff24174", 
-        taskID: "123"
-        variables: {
-            name: "key2", value: "value2"
-        }
-    }) {        
-        results{
-            id
-            variables{
-                name
-                value
-            }           
-        }
-    }
-}
-```
+Op dit moment biedt BIDN de volgende service aan:
 
-Indien de response van `executeService` of van `executeTask` de variabele `is_last_step` bevat dan is het proces klaar
-en is het resultaat het eind resultaat.
-
-```
-{
-    "data": {
-        "executeService": {
-            "referenceID": "b50de104-5367-41a3-ba27-5ccbdff24174",
-            "results": {
-                id: "123",
-                variables: [
-                    {
-                        "name": "results",
-                        "value": "{}"
-                    },
-                    {
-                        "name": "is_last_step",
-                        "value": "true"
-                    }
-                ]
-            }
-        }
-    }
-}
-```
-
-Met deze stappen kunnen alle services in VWI, waar de organisatie toegang tot heeft, uitegevoerd worden. 
-
-
-
-    
-
+- [Individuele inkomenstoeslag (IIT)](./services/IIT/README.md) voor meer informatie over de IIT service.
